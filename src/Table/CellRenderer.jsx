@@ -46,12 +46,14 @@ function CellEditor({ column, value, onCommit, onCancel }) {
   switch (column.type) {
     case CELL_TYPES.BOOLEAN:
       return (
-        <input
-          type="checkbox"
-          defaultChecked={value}
-          autoFocus
-          onChange={(e) => onCommit(e.target.checked)}
-        />
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <input
+            type="checkbox"
+            defaultChecked={value}
+            autoFocus
+            onChange={(e) => onCommit(e.target.checked)}
+          />
+        </div>
       )
     case CELL_TYPES.SELECT:
       return (

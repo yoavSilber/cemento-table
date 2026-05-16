@@ -100,7 +100,7 @@ body {
 }
 
 /* Cell editors */
-.table-row input,
+.table-row input:not([type="checkbox"]),
 .table-row select {
   width: 100%;
   box-sizing: border-box;
@@ -109,6 +109,12 @@ body {
   padding: 2px 4px;
   font-size: 13px;
   outline: none;
+}
+
+.table-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 
 /* Empty state */

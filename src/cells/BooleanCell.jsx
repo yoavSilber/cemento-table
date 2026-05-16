@@ -1,5 +1,9 @@
 function BooleanCell({ value }) {
-    return <span>{value ? '✓' : '✗'}</span>
-  }
-  
-  export default BooleanCell
+  return (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <span>{value ? '✓' : '✗'}</span>
+    </div>
+  )
+}
+
+export default BooleanCell
