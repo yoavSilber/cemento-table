@@ -99,6 +99,18 @@ body {
   font-size: 13px;
 }
 
+/* Cell editors */
+.table-row input,
+.table-row select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #6366f1;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 13px;
+  outline: none;
+}
+
 /* Empty state */
 .table-empty {
   padding: 48px;
