@@ -6,9 +6,9 @@ import VirtualList from './VirtualList'
 const LIST_HEIGHT = 600
 
 function Table({ columns, data }) {
-  const [editingCell, setEditingCell] = useState(null)
-  const [tableData, setTableData] = useState(data)
-  const [hiddenColumnIds, setHiddenColumnIds] = useState(new Set())
+  const [editingCell, setEditingCell] = useState(null) // the rows (edits update this)
+  const [tableData, setTableData] = useState(data) // { rowId, columnId } or null
+  const [hiddenColumnIds, setHiddenColumnIds] = useState(new Set()) //Set of hidden column ids
   const [showVisibilityPanel, setShowVisibilityPanel] = useState(false)
 
   const sortedColumns = [...columns]
@@ -89,17 +89,20 @@ function Table({ columns, data }) {
             itemHeight={ROW_HEIGHT}
             height={LIST_HEIGHT}
             width={totalWidth}
-            renderItem={(index) => (
+            renderItem={(index) => {
+              const row = tableData[index]
+              const editingColumnId = editingCell?.rowId === row.id ? editingCell.columnId : null
+              return (
               <Row
-                key={tableData[index].id}
-                row={tableData[index]}
+                key={row.id}
+                row={row}
                 columns={sortedColumns}
-                editingCell={editingCell}
+                editingColumnId={editingColumnId}
                 onStartEdit={startEdit}
                 onCommit={commitEdit}
                 onCancel={cancelEdit}
               />
-            )}
+            )}}
           />
         </div>
       </div>
