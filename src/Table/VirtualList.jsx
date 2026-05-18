@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
 const BUFFER = 3
 
 function VirtualList({ itemCount, itemHeight, height, width, renderItem }) {
   const [scrollTop, setScrollTop] = useState(0)
-  const containerRef = useRef(null)
 
   const visibleCount = Math.ceil(height / itemHeight)
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - BUFFER)
@@ -15,7 +14,6 @@ function VirtualList({ itemCount, itemHeight, height, width, renderItem }) {
 
   return (
     <div
-      ref={containerRef}
       style={{ height, width, overflowY: 'auto' }}
       onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
     >
